@@ -21,7 +21,7 @@
             height: 100vh; /* Ocupa toda a altura da tela */
             width: 100%; /* Ocupa toda a largura da tela */
             padding: 0;
-            background-image: url('/bolao2/Sem_titulo_1.png'); /* Substitua 'imagem.jpg' pela URL da sua imagem */
+            background-image: url('Sem_titulo_1.png'); /* Substitua 'imagem.jpg' pela URL da sua imagem */
             background-size: contain; /* A imagem do centro mantém seu tamanho original */
             background-position: top center; /* Coloca a imagem no topo da tela */
             background-repeat: no-repeat; /* Não repete a imagem */
@@ -37,7 +37,7 @@
             top: 0;
             bottom: 0;
             width: 20vw; /* Define a largura das imagens laterais */
-            background-image: url('/bolao2/Sem_titulo_1.png'); /* Mesma imagem de fundo */
+            background-image: url('Sem_titulo_1.png'); /* Mesma imagem de fundo */
             background-size: contain; /* A imagem das laterais se ajusta, mas mantém a proporção */
             background-repeat: no-repeat;
             background-position: center;
@@ -69,7 +69,7 @@
         /* Nova Janela de Formulário */
         .formulario {
             display: block; /* Mudado para garantir que o formulário seja exibido */
-            opacity: 1; /* Tornar o formulário visível */
+            opacity: 0; /* Inicia com opacidade 0 (invisível) */
             padding: 20px;
             border: 2px solid #ccc;
             background-color: chocolate;
@@ -82,6 +82,17 @@
             top: 50%; /* Posiciona no centro verticalmente */
             transform: translateY(-50%); /* Ajusta para o centro exato */
             box-sizing: border-box;
+            animation: fadeIn 4s forwards; /* Adiciona a animação de fade-in */
+        }
+
+        /* Animação de Fade-In */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         /* Estilos do formulário */
