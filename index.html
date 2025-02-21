@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolão: Bolsonaro será preso?</title>
+    <link rel="icon" href="bozo-preso-bolsonaro-preso.gif" type="image/x-icon">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container principal */
+        .container {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            width: 100%; /* Ocupa toda a largura da tela */
+            padding: 0;
+            background-image: url('/bolao2/Sem_titulo_1.png'); /* Substitua 'imagem.jpg' pela URL da sua imagem */
+            background-size: contain; /* A imagem do centro mantém seu tamanho original */
+            background-position: top center; /* Coloca a imagem no topo da tela */
+            background-repeat: no-repeat; /* Não repete a imagem */
+            background-attachment: fixed; /* Fixa a imagem ao fundo para efeito parallax */
+            position: relative; /* Necessário para posicionar as imagens laterais */
+        }
+
+        /* Imagens laterais */
+        .container::before,
+        .container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20vw; /* Define a largura das imagens laterais */
+            background-image: url('/bolao2/Sem_titulo_1.png'); /* Mesma imagem de fundo */
+            background-size: contain; /* A imagem das laterais se ajusta, mas mantém a proporção */
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .container::before {
+            left: 0; /* Posiciona a imagem à esquerda */
+        }
+
+        .container::after {
+            right: 0; /* Posiciona a imagem à direita */
+        }
+
+        /* Janela 1 */
+        .janela {
+            width: 100%; /* Ocupa toda a largura da tela */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            padding: 20px;
+            border: 2px solid #ccc;
+            background-color: transparent; /* Removendo qualquer opacidade */
+            text-align: center; /* Centraliza o conteúdo */
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente o conteúdo */
+            align-items: center; /* Centraliza verticalmente o conteúdo */
+            flex-direction: column;
+            box-sizing: border-box; /* Garante que o padding não quebre o layout */
+        }
+
+        /* Nova Janela de Formulário */
+        .formulario {
+            display: block; /* Mudado para garantir que o formulário seja exibido */
+            opacity: 1; /* Tornar o formulário visível */
+            padding: 20px;
+            border: 2px solid #ccc;
+            background-color: chocolate;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            margin-top: -40px; /* Ajusta a posição do formulário para cima */
+            height: 600px; /* Ajuste na altura do formulário */
+            position: absolute;
+            top: 50%; /* Posiciona no centro verticalmente */
+            transform: translateY(-50%); /* Ajusta para o centro exato */
+            box-sizing: border-box;
+        }
+
+        /* Estilos do formulário */
+        .formulario input,
+        .formulario select,
+        .formulario textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .formulario .linha {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .formulario .linha input,
+        .formulario .linha select {
+            width: 48%; /* Largura para os campos lado a lado */
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .janela {
+                padding: 10px; /* Menos padding em telas pequenas */
+                height: auto; /* Permite altura dinâmica em telas menores */
+                min-height: 100vh; /* Garante que a janela ainda ocupe toda a tela */
+            }
+
+            .formulario {
+                width: 90%;
+            }
+
+            .janela h2 {
+                font-size: 1.5rem; /* Tamanho do título ajustado */
+            }
+
+            .janela p {
+                font-size: 1rem; /* Tamanho do texto ajustado */
+            }
+
+            .formulario .linha input,
+            .formulario .linha select {
+                width: 100%; /* Torna os campos de entrada e select em uma única coluna */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="janela">
+            <h2>Bolão: Bolsonaro será preso?</h2>
+        </div>
+        <!-- Nova Janela de Formulário -->
+        <div class="formulario" id="formulario">
+            <h2>Bolão - Prisão do Bolsonaro</h2><br>
+            <h4>Marque abaixo quando você acha que ele será preso ou se você acha que ele não será preso.
+                Cada opção tem um multiplicador. Quanto mais opções, maior o multiplicador.
+            </h4>
+            <form id="form">
+                <div class="linha">
+                    <input type="number" id="ano" placeholder="Ano" min="2025" 
+                    oninvalid="this.setCustomValidity('Digite um ano válido, a partir de 2025!')" 
+                    oninput="this.setCustomValidity('')">
+                    <select id="mes" oninvalid="this.setCustomValidity('Escolha um mês!')" 
+                    oninput="this.setCustomValidity('')">
+                        <option value="">Mês</option>
+                        <option value="janeiro">Janeiro</option>
+                        <option value="fevereiro">Fevereiro</option>
+                        <option value="março">Março</option>
+                        <option value="abril">Abril</option>
+                        <option value="maio">Maio</option>
+                        <option value="junho">Junho</option>
+                        <option value="julho">Julho</option>
+                        <option value="agosto">Agosto</option>
+                        <option value="setembro">Setembro</option>
+                        <option value="outubro">Outubro</option>
+                        <option value="novembro">Novembro</option>
+                        <option value="dezembro">Dezembro</option>
+                    </select>
+                </div>
+                <div class="linha">
+                    <input type="number" id="dia" placeholder="Dia" min="1" max="31" 
+                    oninvalid="this.setCustomValidity('Escolha um dia entre 1 e 31!')" 
+                    oninput="this.setCustomValidity('')">
+                    <input type="number" id="hora" placeholder="Hora" min="0" max="23" 
+                    oninvalid="this.setCustomValidity('Escolha uma hora entre 00 e 23!')" 
+                    oninput="this.setCustomValidity('')">
+                </div>
+                <!-- Campo "Não será preso" -->
+                <label>
+                    <input type="checkbox" id="naoPreso"> Não será preso
+                </label>
+                <input type="text" placeholder="Nome" id="nome" required minlength="3" 
+                oninvalid="this.setCustomValidity('O nome precisa ter pelo menos 3 caracteres!')" 
+                oninput="this.setCustomValidity('')">
+                <input type="email" placeholder="E-mail" id="email" required 
+                oninvalid="this.setCustomValidity('Digite um e-mail válido!')" 
+                oninput="this.setCustomValidity('')">
+                <!-- Campo para Telefone com máscara -->
+                <input type="tel" placeholder="Telefone" id="telefone" required 
+                oninput="mascaraTelefone(this)">
+                <!-- Campo para código alfanumérico -->
+                <input type="text" id="codigo" placeholder="Código Aleatório" readonly>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Função para gerar um código alfanumérico aleatório de 6 dígitos
+        function gerarCodigo() {
+            const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let codigo = '';
+            for (let i = 0; i < 6; i++) {
+                const indice = Math.floor(Math.random() * caracteres.length);
+                codigo += caracteres.charAt(indice);
+            }
+            return codigo;
+        }
+
+        // Função para evitar a repetição de códigos
+        const codigosGerados = new Set(); // Usando Set para garantir unicidade
+
+        document.getElementById('form').onsubmit = function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            // Gera um novo código e garante que não seja repetido
+            let novoCodigo;
+            do {
+                novoCodigo = gerarCodigo();
+            } while (codigosGerados.has(novoCodigo));
+
+            // Adiciona o código ao Set de códigos gerados
+            codigosGerados.add(novoCodigo);
+
+            // Atualiza o campo com o novo código
+            document.getElementById('codigo').value = novoCodigo;
+
+            // Exibe a mensagem de sucesso
+            alert('Aposta realizada com sucesso!');
+        };
+
+        // Função para limpar os campos quando "Não será preso" for marcado
+        document.getElementById('naoPreso').addEventListener('change', function() {
+            const camposDesabilitar = ['ano', 'mes', 'dia', 'hora'];
+
+            if (this.checked) {
+                // Desabilitar os campos
+                camposDesabilitar.forEach(id => {
+                    document.getElementById(id).disabled = true;
+                    document.getElementById(id).value = ''; // Limpa os valores
+                });
+            } else {
+                // Habilitar os campos
+                camposDesabilitar.forEach(id => {
+                    document.getElementById(id).disabled = false;
+                });
+            }
+        });
+
+        // Função de máscara para o campo telefone
+        function mascaraTelefone(input) {
+            let telefone = input.value.replace(/\D/g, ''); // Remove tudo o que não for número
+            if (telefone.length <= 10) {
+                telefone = telefone.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3'); // Formato (XX) XXXX-XXXX
+            } else {
+                telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3'); // Formato (XX) XXXXX-XXXX
+            }
+            input.value = telefone;
+        }
+    </script>
+
+</body>
+</html>
