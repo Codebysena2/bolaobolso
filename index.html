@@ -82,7 +82,7 @@
             top: 50%; /* Posiciona no centro verticalmente */
             transform: translateY(-50%); /* Ajusta para o centro exato */
             box-sizing: border-box;
-            animation: fadeIn 4s forwards; /* Adiciona a animação de fade-in */
+            animation: fadeIn 2s forwards; /* Adiciona a animação de fade-in */
         }
 
         /* Animação de Fade-In */
@@ -178,6 +178,8 @@
                         <option value="dezembro">Dezembro</option>
                     </select>
                 </div>
+
+
                 <div class="linha">
                     <input type="number" id="dia" placeholder="Dia" min="1" max="31" 
                     oninvalid="this.setCustomValidity('Escolha um dia entre 1 e 31!')" 
@@ -186,10 +188,34 @@
                     oninvalid="this.setCustomValidity('Escolha uma hora entre 00 e 23!')" 
                     oninput="this.setCustomValidity('')">
                 </div>
-                <!-- Campo "Não será preso" -->
+                
+                <!-- Campo "Não será preso" movido para cima -->
                 <label>
                     <input type="checkbox" id="naoPreso"> Não será preso
                 </label>
+                
+                <!-- Novo campo "Valor de Aposta" e "Multiplicador" -->
+                <div class="linha">
+                    <select id="valorAposta" required 
+                    oninvalid="this.setCustomValidity('Escolha um valor de aposta!')" 
+                    oninput="this.setCustomValidity('')">
+                        <option value="">Valor de Aposta</option>
+                        <option value="5">R$05,00</option>
+                        <option value="10">R$10,00</option>
+                        <option value="20">R$20,00</option>
+                        <option value="50">R$50,00</option>
+                        <option value="100">R$100,00</option>
+                    </select>
+                
+                    <!-- Novo campo "Multiplicador" -->
+                    <input type="number" id="multiplicador" placeholder="Multiplicador" 
+                    min="1" step="0.1" required 
+                    oninvalid="this.setCustomValidity('Digite um multiplicador válido!')" 
+                    oninput="this.setCustomValidity('')">
+                </div>
+                
+                
+ 
                 <input type="text" placeholder="Nome" id="nome" required minlength="3" 
                 oninvalid="this.setCustomValidity('O nome precisa ter pelo menos 3 caracteres!')" 
                 oninput="this.setCustomValidity('')">
