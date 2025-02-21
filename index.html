@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Bolão: Bolsonaro será preso?</title>
+
   <link rel="icon" href="bozo-preso-bolsonaro-preso.gif" type="image/x-icon">
+
   <style>
     /* Reset básico */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; /*A propriedade margin no CSS define o espaçamento externo de um elemento, ou seja, a distância entre esse elemento e os outros ao seu redor.*/
+      padding: 0; /*A propriedade padding no CSS define o espaçamento interno de um elemento, ou seja, a distância entre o conteúdo do elemento e sua borda.*/
+      box-sizing: border-box; /*Quando usamos box-sizing: border-box;, o padding e a border já estão incluídos na largura e altura definidas, mantendo o tamanho total do elemento.*/
     }
+
 
     /* Container principal */
     .container {
@@ -21,19 +25,19 @@
       height: 100vh; /* Ocupa toda a altura da tela */
       width: 100%; /* Ocupa toda a largura da tela */
       padding: 0;
-      background-image: url('Sem_titulo_1.png'); /* Substitua pela URL da sua imagem */
-      background-size: contain;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      position: relative;
+      background-image: url('Sem_titulo_1.png'); /* Fundo de imagem. Substitua pela URL da sua imagem */
+      background-size: contain; /*A propriedade background-size: contain; ajusta o tamanho da imagem de fundo (background-image) de um elemento para que ela caiba completamente dentro do elemento, sem ser cortada.*/
+      background-position: top center; /*A propriedade background-position: top center; define a posição da imagem de fundo dentro do elemento. Top: alinha a imagem no topo; Center, alinha a imagem no centro. Nesse caso, a imagem ficará colada no topo, e centralizada horizontalmente.*/
+      background-repeat: no-repeat; /*A propriedade background-repeat: no-repeat; impede que a imagem de fundo seja repetida dentro do elemento.*/
+      background-attachment: fixed; /*A propriedade background-attachment: fixed; faz com que a imagem de fundo fique fixa na tela enquanto o usuário rola a página.*/
+      position: relative; /*A propriedade position: relative; no CSS permite posicionar um elemento em relação à sua posição original no layout. Isso significa que ele ainda ocupa o mesmo espaço que teria normalmente, mas pode ser deslocado usando top, right, bottom e left.*/
     }
 
     /* Imagens laterais */
-    .container::before,
-    .container::after {
-      content: "";
-      position: absolute;
+    .container::before,   /*Os seletores ::before e ::after são pseudo-elementos usados para*/
+    .container::after {   /* adicionar conteúdo antes ou depois de um elemento, sem precisar colocar nada no HTML.*/
+      content: "";  /*A propriedade content é usada em pseudo-elementos (::before, ::after, etc.) para inserir conteúdo gerado dinamicamente no documento. Esse conteúdo não faz parte do HTML, mas é renderizado como parte do estilo do elemento. O content pode ser texto, imagens, ou até mesmo valores vazios.*/
+      position: absolute; /*A propriedade position: absolute; é usada para remover um elemento do fluxo normal da página e posicioná-lo relativamente ao seu ancestral mais próximo com position: relative, position: absolute, ou position: fixed. Caso não haja um ancestral com essas propriedades, o elemento será posicionado em relação ao body da página.*/
       top: 0;
       bottom: 0;
       width: 20vw;
@@ -119,39 +123,46 @@
         height: auto;
         min-height: 100vh;
       }
+
       .formulario {
         width: 90%;
       }
+
       .janela h2 { font-size: 1.5rem; }
       .janela p { font-size: 1rem; }
       .formulario .linha input,
       .formulario .linha select {
-        width: 100%;
+        width: 90%;
       }
     }
 
     /* Campo para mostrar o valor do prêmio */
     .formulario .premio {
-      margin-top: 20px;
+      margin-top: 0px;
       font-size: 1.2rem;
       font-weight: bold;
     }
+
   </style>
 </head>
+
+
 <body>
 
+  <!-- AQUI COMEÇA A JANELA DO FORMULÁRIO -->
   <div class="container">
-    <div class="janela">
-      <h2>Bolão: Bolsonaro será preso?</h2>
-    </div>
-    <!-- Nova Janela de Formulário -->
+
+    <!-- Janela do Formulário -->
     <div class="formulario" id="formulario">
       <h2>Bolão - Prisão do Bolsonaro</h2><br>
       <h4>Marque abaixo quando você acha que ele será preso ou se você acha que ele não será preso.
         Cada opção tem um multiplicador. Quanto mais informações preenchidas, maior o multiplicador.
       </h4>
+
       <form id="form">
+
         <!-- Linha com campos Ano e Mês -->
+         <!-- Div do Ano -->
         <div class="linha">
           <select id="ano" oninvalid="this.setCustomValidity('Escolha um ano!')" oninput="this.setCustomValidity('')">
             <option value="">Ano</option>
@@ -162,6 +173,8 @@
             <option value="2029">2029</option>
             <option value="2030">2030</option>
           </select>
+
+          <!-- Div do Mês -->
           <select id="mes" oninvalid="this.setCustomValidity('Escolha um mês!')" oninput="this.setCustomValidity('')">
             <option value="">Mês</option>
             <option value="janeiro">Janeiro</option>
@@ -180,9 +193,11 @@
         </div>
 
         <!-- Linha com campos Dia e Hora -->
+         <!-- Div do Dia -->
         <div class="linha">
           <select id="dia" oninvalid="this.setCustomValidity('Escolha um dia!')" oninput="this.setCustomValidity('')">
             <option value="">Dia</option>
+
             <!-- Gerando opções de 1 a 31 -->
             <option value="1">1</option>
             <option value="2">2</option>
@@ -216,19 +231,22 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
+
+          <!-- Div da Hora -->
           <select id="hora" oninvalid="this.setCustomValidity('Escolha uma hora!')" oninput="this.setCustomValidity('')">
             <option value="">Hora</option>
+            
             <!-- Opções de 0 a 23 -->
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            <option value="0">00</option>
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+            <option value="5">05</option>
+            <option value="6">06</option>
+            <option value="7">07</option>
+            <option value="8">08</option>
+            <option value="9">09</option>
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -252,6 +270,7 @@
         </label>
                 
         <!-- Linha com campos Valor de Aposta e Multiplicador -->
+         <!-- Div Valor de Aposta -->
         <div class="linha">
           <select id="valorAposta" required oninvalid="this.setCustomValidity('Escolha um valor de aposta!')" oninput="this.setCustomValidity('')">
             <option value="">Valor de Aposta</option>
@@ -261,22 +280,37 @@
             <option value="50">R$50,00</option>
             <option value="100">R$100,00</option>
           </select>
+          
           <!-- Campo Multiplicador somente leitura -->
           <input type="number" id="multiplicador" placeholder="Multiplicador" min="1" step="0.1" required readonly>
         </div>
-                
-        <div class="premio" id="valorPremio">Valor do Prêmio: R$0,00</div>
+
+        <!-- Campo Valor do Prêmio -->                
+        <div class="premio" id="valorPremio">Valor do Prêmio: R$
+
+        </div>
  
+        <!-- Campos para o usuário preencher seus dados: Nome, E-mail, Telefone -->
         <input type="text" placeholder="Nome" id="nome" required minlength="3" oninvalid="this.setCustomValidity('O nome precisa ter pelo menos 3 caracteres!')" oninput="this.setCustomValidity('')">
         <input type="email" placeholder="E-mail" id="email" required oninvalid="this.setCustomValidity('Digite um e-mail válido!')" oninput="this.setCustomValidity('')">
         <input type="tel" placeholder="Telefone" id="telefone" required oninput="mascaraTelefone(this)">
-        <input type="text" id="codigo" placeholder="Código Aleatório" readonly>
-        <button type="submit">Enviar</button>
+        
+        <!-- Campo do código -->
+        <input type="text" id="codigo" placeholder="Código de Confirmação de Aposta" readonly>
+        
+        <!-- Botão "Enviar e Pagar" -->
+        <button type="submit">Enviar e Pagar</button>
+
       </form>
     </div>
   </div>
 
+
+
+                <!-- SCRIPTS -->
+
   <script>
+
     // Função para gerar um código alfanumérico aleatório de 6 dígitos
     function gerarCodigo() {
       const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -299,7 +333,7 @@
       } while (codigosGerados.has(novoCodigo));
       codigosGerados.add(novoCodigo);
       document.getElementById('codigo').value = novoCodigo;
-      alert('Aposta realizada com sucesso!');
+      alert('Aposta realizada com sucesso!\nAnote o seu "Código de Confirmação de Aposta" \nque será gerado no último campo da tela, pois será \ncom ele que você comprovará sua aposta caso ganhe.');
     };
 
     // Função para aplicar máscara no campo de telefone
@@ -323,7 +357,7 @@
 
     // Atualiza o multiplicador com base nos campos preenchidos
     function atualizarMultiplicador() {
-      let multiplicador = 1;
+      let multiplicador = '';
       
       if (document.getElementById('naoPreso').checked) {
         multiplicador = 1500;
