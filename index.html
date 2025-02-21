@@ -162,7 +162,8 @@
       <form id="form">
 
         <!-- Linha com campos Ano e Mês -->
-         <!-- Div do Ano -->
+        <!-- Div do Ano -->
+        <!-- Div do Ano -->
         <div class="linha">
           <select id="ano" oninvalid="this.setCustomValidity('Escolha um ano!')" oninput="this.setCustomValidity('')">
             <option value="">Ano</option>
@@ -193,12 +194,11 @@
         </div>
 
         <!-- Linha com campos Dia e Hora -->
-         <!-- Div do Dia -->
         <div class="linha">
+          <!-- Div do Dia -->
           <select id="dia" oninvalid="this.setCustomValidity('Escolha um dia!')" oninput="this.setCustomValidity('')">
             <option value="">Dia</option>
-
-            <!-- Gerando opções de 1 a 31 -->
+            <!-- Opções de 1 a 31 -->
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -235,7 +235,6 @@
           <!-- Div da Hora -->
           <select id="hora" oninvalid="this.setCustomValidity('Escolha uma hora!')" oninput="this.setCustomValidity('')">
             <option value="">Hora</option>
-            
             <!-- Opções de 0 a 23 -->
             <option value="0">00</option>
             <option value="1">01</option>
@@ -263,7 +262,7 @@
             <option value="23">23</option>
           </select>
         </div>
-                
+               
         <!-- Campo "Não será preso" -->
         <label>
           <input type="checkbox" id="naoPreso"> Não será preso
@@ -307,35 +306,68 @@
 
 
 
-                <!-- SCRIPTS -->
+                          <!-- SCRIPTS -->
+  <!-- Script das validações para clicar em "Enviar e Pagar" -->
+  <script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+      // Previne o envio imediato do formulário
+      event.preventDefault();
+      
+      // Verifica se ao menos um campo (ano, mês, dia, hora) foi preenchido
+      let ano = document.getElementById("ano").value;
+      let mes = document.getElementById("mes").value;
+      let dia = document.getElementById("dia").value;
+      let hora = document.getElementById("hora").value;
+      let naoPreso = document.getElementById("naoPreso").checked; // Verifica se o checkbox está marcado
+
+  
+      // Se todos os campos estão vazios, cancela o envio do formulário e exibe uma mensagem
+      if (ano === "" && mes === "" && dia === "" && hora === "" && !naoPreso) {
+          alert("Está faltando pelo menos um campo a ser selecionado!");
+      } else {
+          // Função para gerar um código alfanumérico aleatório de 6 dígitos
+          function gerarCodigo() {
+              const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+              let codigo = '';
+              for (let i = 0; i < 6; i++) {
+                  const indice = Math.floor(Math.random() * caracteres.length);
+                  codigo += caracteres.charAt(indice);
+              }
+              return codigo; // Retorna o código gerado
+          }
+  
+          // Função para evitar a repetição de códigos
+          const codigosGerados = new Set();
+  
+          // Gerar um código único
+          let novoCodigo;
+          do {
+              novoCodigo = gerarCodigo();
+          } while (codigosGerados.has(novoCodigo));
+  
+          // Adiciona o código gerado ao Set
+          codigosGerados.add(novoCodigo);
+  
+          // Preenche o campo de código com o código gerado
+          document.getElementById('codigo').value = novoCodigo;
+  
+          // Exibe a mensagem de sucesso
+          alert('Aposta realizada com sucesso!\nAnote o seu "Código de Confirmação de Aposta" \nque será gerado no último campo da tela, pois será \ncom ele que você comprovará sua aposta caso ganhe.');
+          alert("Anote seu código de confirmação da aposta,\npois a página será recarregada em 15 segundos.")
+
+          // Aguarda 15 segundos e então recarrega a página ou faz outro tipo de ação
+          setTimeout(function() {
+              // Recarrega a página após o tempo
+              location.reload();  // Ou você pode usar outra ação que desejar
+          }, 15000); // 15000 ms = 15 segundos
+      }
+    });
+  </script>
+  <!-- Final do Script das Validações para clicar em Enviar e Pagar -->
+  
+                
 
   <script>
-
-    // Função para gerar um código alfanumérico aleatório de 6 dígitos
-    function gerarCodigo() {
-      const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let codigo = '';
-      for (let i = 0; i < 6; i++) {
-        const indice = Math.floor(Math.random() * caracteres.length);
-        codigo += caracteres.charAt(indice);
-      }
-      return codigo;
-    }
-
-    // Função para evitar a repetição de códigos
-    const codigosGerados = new Set();
-
-    document.getElementById('form').onsubmit = function(event) {
-      event.preventDefault();
-      let novoCodigo;
-      do {
-        novoCodigo = gerarCodigo();
-      } while (codigosGerados.has(novoCodigo));
-      codigosGerados.add(novoCodigo);
-      document.getElementById('codigo').value = novoCodigo;
-      alert('Aposta realizada com sucesso!\nAnote o seu "Código de Confirmação de Aposta" \nque será gerado no último campo da tela, pois será \ncom ele que você comprovará sua aposta caso ganhe.');
-    };
-
     // Função para aplicar máscara no campo de telefone
     function mascaraTelefone(input) {
       let telefone = input.value.replace(/\D/g, '');
